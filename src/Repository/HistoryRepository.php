@@ -19,32 +19,8 @@ class HistoryRepository extends ServiceEntityRepository
         parent::__construct($registry, History::class);
     }
 
-    // /**
-    //  * @return History[] Returns an array of History objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('h')
-            ->andWhere('h.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('h.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+    //Requête get tout les url youtube avec ordre décroissant
+    public function findAllByRecent(){
+        return $this->getEntityManager()->createQuery('SELECT h FROM App\Entity\History h ORDER BY h.id DESC')->getResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?History
-    {
-        return $this->createQueryBuilder('h')
-            ->andWhere('h.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
